@@ -1,0 +1,56 @@
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1413182823222",
+    "Statement": [{
+      "Sid": "Stmt1413182819426",
+      "Effect": "Allow",
+      "Principal": {
+       "AWS": "arn:aws:iam::718504428378:root"
+      },
+      "Action": "s3:GetBucketAcl",
+      "Resource": "arn:aws:s3:::alb-test123/ALB/"
+     },
+     {
+      "Sid": "AWSLogDeliveryWritenlb",
+      "Effect": "Allow",
+      "Principal": {
+       "Service": "delivery.logs.amazonaws.com"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::alb-test123/ALB/AWSLogs/AWSACCOUNTID/*",
+      "Condition": {
+       "StringEquals": {
+        "s3:x-amz-acl": "bucket-owner-full-control"
+       }
+      }
+     },
+     {
+      "Sid": "Stmt1413182819422",
+      "Effect": "Allow",
+      "Principal": {
+       "AWS": "arn:aws:iam::718504428378:root"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::s3-elb-logs-test/test-alb2/AWSLogs/AWSACCOUNTID/*",
+      "Condition": {
+       "StringEquals": {
+        "s3:x-amz-acl": "bucket-owner-full-control"
+       }
+      }
+     },
+     {
+      "Sid": "Stmt1413182819423",
+      "Effect": "Allow",
+      "Principal": {
+       "AWS": "arn:aws:iam::718504428378:root"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::s3-elb-logs-test/test-alb/AWSLogs/AWSACCOUNTID/*",
+      "Condition": {
+       "StringEquals": {
+        "s3:x-amz-acl": "bucket-owner-full-control"
+       }
+      }
+     }
+    ]
+   }
